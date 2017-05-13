@@ -35,8 +35,8 @@ double radio;
 
 // funciona para calcular la velocidad del medio
 
-double velocidad_medio(double velocidad_medio) {
-	return velocidad_luz/velocidad_medio;
+double velocidad_medio(double indice_medio) {
+	return velocidad_luz/indice_medio;
 	}
 
 
