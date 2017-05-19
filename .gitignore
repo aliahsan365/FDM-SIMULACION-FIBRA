@@ -1,14 +1,2 @@
 
 Practica4/Practica4.pro.user
-Deployment/translations/qt_uk.qm
-*.qm
-*.dll
-*.exe
-Build/ui_Dialog.h
-Build/release/moc_Dialog.o
-Build/release/moc_Dialog.cpp
-Build/release/main.o
-Build/release/Dialog.o
-Build/Makefile.Release
-Build/Makefile.Debug
-Build/Makefile
