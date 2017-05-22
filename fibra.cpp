@@ -62,7 +62,7 @@ const double radio = 0.01; // la "a " de la fibra
 
 int main(void) {
    
-    while (1) {cout << randomizevalue(1.58, 2.0) << endl;}
+    //while (1) {cout << randomizevalue(1.58, 2.0) << endl;}
      if(first) {
 		cout << "INTRODUZE LOS DATOS:" << endl;
 		//numero de regiones
