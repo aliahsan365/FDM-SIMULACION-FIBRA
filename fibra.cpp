@@ -157,7 +157,7 @@ void lanza_algoritmo() {
 			auxini.second = min(d1*c/mediouno,d2*c/mediouno);
 			timeregionuno = timeregionuno + 1/(c/mediouno);
 			double anguloincidencia = atan(abs(auxini.second-aux))* 180.0 / PI;
-			cout << "angulo de incidencia de la region de cambio de medio" << anguloincidencia <<  endl;
+			cout << "angulo de incidencia de la region de cambio de medio " << anguloincidencia <<  endl;
 			
 			}
 		else {
@@ -261,7 +261,7 @@ double randZeroToOne()
 
 double randomizevalue(double min, double max) {
 	srand (time(NULL));
-	double res =   rand() / (min + max);
+	double res =   (double)rand() / RAND_MAX;
 	cout << "resultado de randomizar " << res << endl; 
-	return res;
+	return min+res*(max-min);
 	}
