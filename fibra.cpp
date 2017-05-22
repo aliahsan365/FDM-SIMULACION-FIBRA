@@ -13,13 +13,14 @@ using namespace std;
 
 
 
+
 double velocidad_medio(double indice_medio);
 double centro_fibra(double r);
 double ley_snell(double mediouno, double mediodos, double anguloi, double angulor, int cal);
 void lanza_snell();
 void lanza_fibra_r();
 void lanza_algoritmo();
-double randomizevalue(double m);
+double randomizevalue(double min, double max);
 
 //funciona para generar numero entre 0 y N
 int randZeroToN();
@@ -55,13 +56,13 @@ double angulor;
 const int c = 1;
 
 //facotor para la fibra
-const double fact = (mediouno-mediodos)/mediouno;
+const double fact = (mediouno-mediodos)/mediouno; // delta de la fibra 
 
-const double radio = 0.01;
+const double radio = 0.01; // la "a " de la fibra
 
 int main(void) {
    
-   
+    while (1) {cout << randomizevalue(1.58, 2.0) << endl;}
      if(first) {
 		cout << "INTRODUZE LOS DATOS:" << endl;
 		//numero de regiones
@@ -132,24 +133,39 @@ void lanza_algoritmo() {
 	
 	for (int i = 0; i < N; ++i) {
 		
-		double auxminrand = auxini.second-0;
-		double minrand =  randomizevalue(auxminrand);
-		double auxmaxrand = 1-auxini.second;
-		double maxrand =  randomizevalue(auxmaxrand);
+		double minrand =  randomizevalue(0.0,auxini.second);
+		double maxrand =  randomizevalue(auxini.second,1.0);
 		double d1,d2;
 		
 		if (i < change) {
 			//tiempo = distancia_region(1) / velocidad_medio1.
 			
 			d1 = sqrt( pow(minrand,2) + pow(1,2));
+			cout << "d1 "  << d1 << endl;
 			d2 = sqrt( pow(maxrand,2) + pow(1,2));
+			cout << "d2 " << d2 << endl;
 			auxini.second = min(d1*c/mediouno,d2*c/mediouno);
 			timeregionuno = timeregionuno + 1/(c/mediouno);
+			}
+		else if (i == change) {
+			//calculamos el angulo de incidencia;
+			double aux = auxini.second;
+			d1 = sqrt( pow(minrand,2) + pow(1,2));
+			cout << "d1 "  << d1 << endl;
+			d2 = sqrt( pow(maxrand,2) + pow(1,2));
+			cout << "d2 "  << d2 << endl;
+			auxini.second = min(d1*c/mediouno,d2*c/mediouno);
+			timeregionuno = timeregionuno + 1/(c/mediouno);
+			double anguloincidencia = atan(abs(auxini.second-aux))* 180.0 / PI;
+			cout << "angulo de incidencia de la region de cambio de medio" << anguloincidencia <<  endl;
+			
 			}
 		else {
 			//tiempo = distancia_region(1) / velocidad_medio2.
 		    d1 = sqrt( pow(minrand,2) + pow(1,2));
+		    cout << "d1 "  << d1 << endl;
 			d2 = sqrt( pow(maxrand,2) + pow(1,2));
+			cout << "d2 "  << d2 << endl;
 			auxini.second = min(d1*c/mediodos,d2*c/mediodos);
 			timeregiondos = timeregiondos + 1/(c/mediodos);
 			}
@@ -243,6 +259,9 @@ double randZeroToOne()
 	return  rand() / (RAND_MAX + 1.);
 }
 
-double randomizevalue(double m) {
-	return m;
+double randomizevalue(double min, double max) {
+	srand (time(NULL));
+	double res =   rand() / (min + max);
+	cout << "resultado de randomizar " << res << endl; 
+	return res;
 	}
