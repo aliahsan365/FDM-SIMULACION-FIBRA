@@ -19,6 +19,7 @@ double ley_snell(double mediouno, double mediodos, double anguloi, double angulo
 void lanza_snell();
 void lanza_fibra_r();
 void lanza_algoritmo();
+double randomizevalue(double m);
 
 //funciona para generar numero entre 0 y N
 int randZeroToN();
@@ -51,7 +52,7 @@ double anguloi;
 double angulor;
 
 //velocidad de la luz fijada.
-const int velocidad_luz = 1;
+const int c = 1;
 
 //facotor para la fibra
 const double fact = (mediouno-mediodos)/mediouno;
@@ -100,6 +101,7 @@ int main(void) {
 		cout << "se a va realizar la accion numero: " << accion << endl;
 		if (accion == 1) lanza_snell();
 		else if (accion == 2) lanza_fibra_r();
+		else if (accion == 3) lanza_algoritmo();
 		else if (accion == 4) {cout << "saliendo el programa" << endl;exit(0);}
 		else {cout << "el valor ha de estar entre 1 y 3, adios " << endl; exit(1);}
 		}
@@ -110,11 +112,52 @@ void lanza_algoritmo() {
 	
 
 	cout << "el valor de y(0)" << INI.second << endl;
-	cout << "pintar como avanza en linea recta " << endl;
 	
 	
+	int change = randZeroToN();
+	
+	double timeregionuno = 0.0;
+	double timeregiondos = 0.0;
+	double timetotal = 0.0;
+	
+	cout << "timepo = ditancia/velocidad" << endl;
+	cout << "disstancia es siempre 1" << endl;
+	cout << "velocidad depende del medio : v = v_luz/indice_medio" << endl;
+	cout << "velocidad para el medio 1 " << c/mediouno << endl;
+	cout << "velocidad para el medio 2 " << c/mediodos << endl;
+
+	cout << "va a empezar a cambiar de medio despues de " << change << " regiones" << endl;
+	pair<double,double > auxini = INI;
+
+	
+	for (int i = 0; i < N; ++i) {
+		
+		double auxminrand = auxini.second-0;
+		double minrand =  randomizevalue(auxminrand);
+		double auxmaxrand = 1-auxini.second;
+		double maxrand =  randomizevalue(auxmaxrand);
+		double d1,d2;
+		
+		if (i < change) {
+			//tiempo = distancia_region(1) / velocidad_medio1.
+			
+			d1 = sqrt( pow(minrand,2) + pow(1,2));
+			d2 = sqrt( pow(maxrand,2) + pow(1,2));
+			auxini.second = min(d1*c/mediouno,d2*c/mediouno);
+			timeregionuno = timeregionuno + 1/(c/mediouno);
+			}
+		else {
+			//tiempo = distancia_region(1) / velocidad_medio2.
+		    d1 = sqrt( pow(minrand,2) + pow(1,2));
+			d2 = sqrt( pow(maxrand,2) + pow(1,2));
+			auxini.second = min(d1*c/mediodos,d2*c/mediodos);
+			timeregiondos = timeregiondos + 1/(c/mediodos);
+			}
+		}
+	timetotal = timeregionuno+timeregiondos;
+	cout << "timeregionuno " << timeregionuno << " timeregiondos "  << timeregiondos << endl;
+	cout << "tiempo total " << timetotal << endl;
 	main();
-	
 	}
 
 	
@@ -123,7 +166,7 @@ void lanza_algoritmo() {
 
 // funciona para calcular la velocidad del medio
 double velocidad_medio(double indice_medio) {
-	return velocidad_luz/indice_medio;
+	return c/indice_medio;
 	}
 	
 	
@@ -190,7 +233,7 @@ double ley_snell(double mediouno, double mediodos, double anguloi, double angulo
 
 int randZeroToN() {
 	srand (time(NULL));
-	return rand() % N + 0;
+	return rand() % N-1 + 0;
 	}
 
 
@@ -200,4 +243,6 @@ double randZeroToOne()
 	return  rand() / (RAND_MAX + 1.);
 }
 
-
+double randomizevalue(double m) {
+	return m;
+	}
