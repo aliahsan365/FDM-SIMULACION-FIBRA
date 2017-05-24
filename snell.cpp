@@ -12,83 +12,50 @@ using namespace std;
 
 
 
-struct region{
+
+class snell {
+	
+	private:
+	
+	
+	struct region{
 	 double puntoinicial;
 	 double puntofinal;
 	 double angulo;
-	 double indice;
+	 double indice; // 1 -> aire ; 1.5->aigua
 	};
-
-
-int randZeroToN(int N) {
-	srand (time(NULL));
-	return rand() % N-2 + 2;
-	}
-
-
-void print_vector_region(vector<region> v) {
+	
+	vector<region> vregiones;
 	
 	
-	for (int i = 0; i < int(v.size()); ++i) {
-		cout << "region numero " << i << ":" << endl;
-		cout << "puntoincial " << v[i].puntoinicial << endl;
-		cout << "puntofinal " <<  v[i].puntofinal << endl;
-		cout << "angulo " << v[i].angulo << endl;
-		cout << "indice " << v[i].indice << endl;
+	int randZeroToN(int N) {
+		srand (time(NULL));
+		return rand() % N-2 + 2;
 		}
+
+	double calcular_puntos(double angulo,double puntoinicial) {
 	
+		double calcsin = sin((angulo*(M_PI/180)));
+		double calccos = cos((angulo*(M_PI/180)));
+		double calcfinal = calcsin/calccos + puntoinicial;
+	    return calcfinal;
 	}
-
-
- 
-
-double calcular_puntos(double angulo,double puntoinicial) {
 	
-    double calcsin = sin((angulo*(M_PI/180)));
-	double calccos = cos((angulo*(M_PI/180)));
-	double calcfinal = calcsin/calccos + puntoinicial;
 	
-	return calcfinal;
 	
-	}
-
-
-
-
-double ley_snell(double indiceuno,double indicedos,double anguloi) {
-	double param = (indiceuno*sin(anguloi*M_PI/180))/indicedos;
-	double res = asin(param)* (180.0 / M_PI);
-	cout << "angulo resultado de snrell " << res << endl;
-	return res;
+    double ley_snell(double indiceuno,double indicedos,double anguloi) {
+		double param = (indiceuno*sin(anguloi*M_PI/180))/indicedos;
+		double res = asin(param)* (180.0 / M_PI);
+		cout << "angulo resultado de snrell " << res << endl;
+		return res;
     }
-
-
-
-int main() {
-
 	
-	int regiones;
-	cout << "mete el numeor de regiones" << endl;
-	cin >> regiones;
+	public: 
+	
+	snell(double puntoinicial,double angulo,double indiceuno,double indicedos, int regiones) {
 	
 	
-	double puntoinicial;
-	cout << "mete el punto inicial" << endl;
-	cin>> puntoinicial;
-	
-	
-	double angulo;
-	cout << "mete el angulo en grados" << endl;
-	cin>> angulo;
-	
-	double indiceuno , indicedos;
-	cout << "mete el indice uno y mete el indice dos" << endl;
-	cin >> indiceuno >> indicedos;
-	
-	
-	vector<region> vregiones(regiones);
-	
-	  
+	  vregiones = vector<region> (regiones);
 
 
      //inicializamos el primero elemento del vector regiones
@@ -113,6 +80,7 @@ int main() {
 	
 	
     int nrand = randZeroToN(regiones);
+    
     cout << "se va a cambiar de regio en la " << nrand << endl;
     
 	
@@ -156,6 +124,34 @@ int main() {
      vregiones[regiones-1].indice = vregiones[regiones-2].indice;
      vregiones[regiones-1].puntofinal = calcular_puntos(vregiones[regiones-2].angulo,vregiones[regiones-2].puntoinicial);
 	print_vector_region(vregiones);
- 
- }
+		
+		
+		
+		
+		}
+    
+    
+    
+    void print_vector_region(vector<region> v) {
+		for (int i = 0; i < int(v.size()); ++i) {
+			cout << "region numero " << i << ":" << endl;
+			cout << "puntoincial " << v[i].puntoinicial << endl;
+			cout << "puntofinal " <<  v[i].puntofinal << endl;
+			cout << "angulo " << v[i].angulo << endl;
+			cout << "indice " << v[i].indice << endl;
+		}
+	
+	}
+
+    
+    
+	
+	};
+	
+	
+int main() {
+	 
+	snell s(0.5,45,1,1.5,10);
+	
+	}
 
