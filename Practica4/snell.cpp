@@ -11,8 +11,6 @@ using namespace std;
 
 
 
-
-
 class snell {
 	
 	private:
@@ -33,8 +31,8 @@ class snell {
 		return rand() % N-2 + 2;
 		}
 
-	double calcular_puntos(double angulo,double puntoinicial) {
 	
+	double calcular_puntos(double angulo,double puntoinicial) {
 		double calcsin = sin((angulo*(M_PI/180)));
 		double calccos = cos((angulo*(M_PI/180)));
 		double calcfinal = calcsin/calccos + puntoinicial;
@@ -48,9 +46,6 @@ class snell {
 		//cout << "indice uno " << indiceuno << endl;
 		//cout << "indice dos " << indicedos << endl;
 		//cout << "angulo i  uno " << anguloi << endl;
-
-
-		
 		double param = indiceuno*sin(anguloi*M_PI/180)/indicedos;
 		//cout << "valor de param " << param << endl;
 		double res = asin(param)* (180.0 / M_PI);
@@ -60,58 +55,24 @@ class snell {
 	
 	public: 
 	
-	
-	
-	
-	
 	snell(double puntoinicial,double angulo,double indiceuno,double indicedos, int regiones) {
-	
-	
-	  vregiones = vector<region> (regiones);
-
-
-     //inicializamos el primero elemento del vector regiones
-     
-     vregiones[0].puntoinicial = puntoinicial;
-    
-     
-     vregiones[0].angulo = angulo;
-     
-     
-
-     vregiones[0].indice = indiceuno;
-     
-
-     
-     vregiones[0].puntofinal = calcular_puntos(vregiones[0].angulo,vregiones[0].puntoinicial);
-
-           
-
-
-	
-	
-	
-    int nrand = randZeroToN(regiones);
-    
-    //cout << "se va a cambiar de regio en la " << nrand << endl;
-    
-	
-    bool cambio_region = false;
-
-	
-	//algoritmo;
-	for (int step = 1 ; step < regiones-1 ; ++step) {
-		vregiones[step].puntoinicial = vregiones[step-1].puntofinal;
-		
-		
-		// no ha cambiado de medio
-		if (step < nrand) {
-		
-		vregiones[step].angulo = vregiones[step-1].angulo;
-		vregiones[step].indice = vregiones[step-1].indice;
-		
-		}
-	    
+		vregiones = vector<region> (regiones);
+		//inicializamos el primero elemento del vector regiones
+		vregiones[0].puntoinicial = puntoinicial;
+		vregiones[0].angulo = angulo;
+		vregiones[0].indice = indiceuno;
+		vregiones[0].puntofinal = calcular_puntos(vregiones[0].angulo,vregiones[0].puntoinicial);
+		int nrand = randZeroToN(regiones);
+		//cout << "se va a cambiar de regio en la " << nrand << endl;
+		bool cambio_region = false;
+		//algoritmo;
+		for (int step = 1 ; step < regiones-1 ; ++step) {
+			vregiones[step].puntoinicial = vregiones[step-1].puntofinal;
+			// no ha cambiado de medio
+			if (step < nrand) {
+				vregiones[step].angulo = vregiones[step-1].angulo;
+				vregiones[step].indice = vregiones[step-1].indice;
+				}
 	    //ha cambiado de medio
 	    else  {
 			//ley de snell para calcuilar el segundo angulo
@@ -127,18 +88,15 @@ class snell {
 				}
             }
         
-        //hacemos que el punto final sera el incial
-        vregiones[step].puntofinal = calcular_puntos(vregiones[step].angulo,vregiones[step].puntoinicial); 
-       }
-       
-         
-     vregiones[regiones-1].puntoinicial = vregiones[regiones-2].puntoinicial;
-     vregiones[regiones-1].angulo = vregiones[regiones-2].angulo;
-     vregiones[regiones-1].indice = vregiones[regiones-2].indice;
-     vregiones[regiones-1].puntofinal = calcular_puntos(vregiones[regiones-2].angulo,vregiones[regiones-2].puntoinicial);
-	//print_vector_region(vregiones);
-		
+			//hacemos que el punto final sera el incial
+			vregiones[step].puntofinal = calcular_puntos(vregiones[step].angulo,vregiones[step].puntoinicial); 
 		}
+       vregiones[regiones-1].puntoinicial = vregiones[regiones-2].puntoinicial;
+	   vregiones[regiones-1].angulo = vregiones[regiones-2].angulo;
+       vregiones[regiones-1].indice = vregiones[regiones-2].indice;
+       vregiones[regiones-1].puntofinal = calcular_puntos(vregiones[regiones-2].angulo,vregiones[regiones-2].puntoinicial);
+	   //print_vector_region(vregiones);
+	 }
     
     
     
@@ -152,18 +110,16 @@ class snell {
 			}
 		}
    
-     vector<region> getvector() {
+   vector<region> getvector() {
 		 return vregiones;
 		 }
 	
-	vector<double> obtener_vector_posini() {
+    vector<double> obtener_vector_posini() {
 		int N = vregiones.size();
 		vector<double> posini(N);
-		
 		for (int i = 0; i < N; ++i) {
 			posini[i] = vregiones[i].puntoinicial;
 			}
-		
 		return posini;
 		}
 		
@@ -171,11 +127,9 @@ class snell {
     vector<double> obtener_vector_posfin() {
 		int N = vregiones.size();
 		vector<double> posfin(N);
-		
 		for (int i = 0; i < N; ++i) {
 			posfin[i] = vregiones[i].puntofinal;
 			}
-		
 		return posfin;
 		}
 		
@@ -191,11 +145,9 @@ class snell {
    vector<double> obtener_vector_angulo() {
 		int N = vregiones.size();
 		vector<double> ang(N);
-		
 		for (int i = 0; i < N; ++i) {
 			ang[i] = vregiones[i].angulo;
 			}
-		
 		return ang;
 		}
 	
@@ -241,6 +193,5 @@ int main() {
 	
 	angulo = s.obtener_vector_angulo();
 	s.print_vector_double(angulo);
-	
-	}
+}
 
