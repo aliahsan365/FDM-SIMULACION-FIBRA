@@ -4,6 +4,9 @@
 #include <QtCore>
 #include <QtGui>
 #include <QGraphicsScene>
+#include "Experiment.h"
+
+
 
 namespace Ui {
 class Dialog;
@@ -19,14 +22,24 @@ public:
 
 public slots:
     void createLine();
+    void setBasicScene();
+    void setFiberScene();
+    void startExperiment();
 
 private:
     Ui::Dialog *ui;
     QGraphicsScene *scene;
-    QTimer *timer;
+    QLineF topLine, leftLine, rightLine, bottomLine;
+    QPen eRed, eBlue, eBlack;
+    Experiment experiment;
 
-    double startX;
-    double startY;
+    double x;
+    double y;
+    bool type; //false = fiber, true = basic)
+
+    void setBox();
+    void handleBasic();
+    void handleFiber();
 };
 
 
