@@ -11,20 +11,18 @@ using namespace std;
 
 
 
-
-
 class Fibra {
 	
 	private:
 	
 	
 	struct region{
-	 double puntoinicial;
-	 double puntofinal;
-	 double angulo;
-	 double indice; // 1 -> aire ; 1.5->aigua
-	 double distanciacalculada;
-	};
+		double puntoinicial;
+		double puntofinal;
+		double angulo;
+		double indice; // 1 -> aire ; 1.5->aigua
+		double distanciacalculada;
+		};
 	
     vector<region> vregiones;
 	vector<region> vregiones2;
@@ -36,19 +34,16 @@ class Fibra {
 
 
 double calcular_puntos(double angulo,double puntoinicial) {
-	   
-		double calcsin = sin((angulo*(M_PI/180)));
-		double calccos = cos((angulo*(M_PI/180)));
+	   double calcsin = sin((angulo*(M_PI/180)));
+	   double calccos = cos((angulo*(M_PI/180)));
 		//para calcular el punto de ini
 		double calcfinal = (calccos*100)/calcsin + puntoinicial;
 		//double calcfinal = (calcsin*50)/calccos + puntoinicial;
-
-	    return calcfinal;
+		return calcfinal;
 	}
 
 double calcular_distancia(double angulo) {
-	   
-		double calcsin = sin((angulo*(M_PI/180)));
+	   double calcsin = sin((angulo*(M_PI/180)));
 		double calccos = cos((angulo*(M_PI/180)));
 		//para calcular el punto de ini
 		double calcfinal = (calccos*100)/calcsin;
@@ -106,6 +101,7 @@ double calcular_distancia(double angulo) {
 		double triangle = 0.01;
 	
 		vregiones = vector<region> (N);
+		
 		vregiones2 = vector<region> (N);
 		
 		vregiones[0].indice = 1.47;
@@ -129,27 +125,24 @@ double calcular_distancia(double angulo) {
 		
 			vregiones[i].puntofinal = calcular_puntos(vregiones[i].angulo,vregiones[i].puntoinicial);
 			
-			
 			vregiones[i].distanciacalculada = calcular_distancia(vregiones[i].angulo);
 			
 			}
 		
-			for (int i = 0; i < int(vregiones.size()); ++i) {
+		for (int i = 0; i < int(vregiones.size()); ++i) {
 			cout << "region numero " << i << ":" << " puntoincial " << vregiones[i].puntoinicial << " puntofinal " <<  vregiones[i].puntofinal  << " angulo " << vregiones[i].angulo <<  " indice " << vregiones[i].indice << " distancia calculada " << vregiones[i].distanciacalculada << endl;
 			}
-			
 			
 		// veregiones2 (bajada en la fibra)
 		
 		
 		//testeado y ok. para lo indcies
+		
 		for (int i = 0; i < N; ++i) {
 			vregiones2[i].indice = vregiones[N-1-i].indice;
 			}
 		
 		//calculamos el primero elemento del vector de bajada .2
-		
-		
 		
 		
 		vregiones2[0].angulo = vregiones[N-1].angulo;
@@ -188,8 +181,7 @@ double calcular_distancia(double angulo) {
 		
 		//escalando el punto final del vector de bajada (vregiones2).
 		//factor (2*i*escalado)
-		
-		}
+	}
     
     void print_vector_region() {
 	
@@ -297,7 +289,7 @@ int main() {
 	//vector<region> vr(N);
 	
 	//puntoinicial , angulo, indice1 , indice2 , nregiones
-	Fibra s(25);
+	Fibra s(30);
 	//s.print_vector_region();
 	
 
