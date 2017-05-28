@@ -45,6 +45,16 @@
            <widget class="QLineEdit" name="n1Edit"/>
           </item>
           <item>
+           <widget class="QLabel" name="label_4">
+            <property name="text">
+             <string>Number of regions</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="regionsEdit"/>
+          </item>
+          <item>
            <widget class="QLabel" name="label_3">
             <property name="text">
              <string>2-Refractive index</string>
@@ -55,14 +65,11 @@
            <widget class="QLineEdit" name="n2Edit"/>
           </item>
           <item>
-           <widget class="QLabel" name="label_4">
+           <widget class="QCheckBox" name="randomBox">
             <property name="text">
-             <string>Number of regions</string>
+             <string>Random Index placement</string>
             </property>
            </widget>
-          </item>
-          <item>
-           <widget class="QLineEdit" name="regionsEdit"/>
           </item>
          </layout>
         </item>

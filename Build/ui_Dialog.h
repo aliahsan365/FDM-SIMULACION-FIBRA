@@ -13,6 +13,7 @@
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
+#include <QtWidgets/QCheckBox>
 #include <QtWidgets/QDialog>
 #include <QtWidgets/QGraphicsView>
 #include <QtWidgets/QGroupBox>
@@ -38,10 +39,11 @@ public:
     QLineEdit *angleEdit;
     QLabel *label_2;
     QLineEdit *n1Edit;
-    QLabel *label_3;
-    QLineEdit *n2Edit;
     QLabel *label_4;
     QLineEdit *regionsEdit;
+    QLabel *label_3;
+    QLineEdit *n2Edit;
+    QCheckBox *randomBox;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
     QPushButton *fiberButton;
@@ -92,6 +94,16 @@ public:
 
         verticalLayout_2->addWidget(n1Edit);
 
+        label_4 = new QLabel(groupBox);
+        label_4->setObjectName(QStringLiteral("label_4"));
+
+        verticalLayout_2->addWidget(label_4);
+
+        regionsEdit = new QLineEdit(groupBox);
+        regionsEdit->setObjectName(QStringLiteral("regionsEdit"));
+
+        verticalLayout_2->addWidget(regionsEdit);
+
         label_3 = new QLabel(groupBox);
         label_3->setObjectName(QStringLiteral("label_3"));
 
@@ -102,15 +114,10 @@ public:
 
         verticalLayout_2->addWidget(n2Edit);
 
-        label_4 = new QLabel(groupBox);
-        label_4->setObjectName(QStringLiteral("label_4"));
+        randomBox = new QCheckBox(groupBox);
+        randomBox->setObjectName(QStringLiteral("randomBox"));
 
-        verticalLayout_2->addWidget(label_4);
-
-        regionsEdit = new QLineEdit(groupBox);
-        regionsEdit->setObjectName(QStringLiteral("regionsEdit"));
-
-        verticalLayout_2->addWidget(regionsEdit);
+        verticalLayout_2->addWidget(randomBox);
 
 
         horizontalLayout->addLayout(verticalLayout_2);
@@ -173,8 +180,9 @@ public:
         groupBox->setTitle(QApplication::translate("Dialog", "Inputs", 0));
         label->setText(QApplication::translate("Dialog", "Incident angle", 0));
         label_2->setText(QApplication::translate("Dialog", "1-Refractive index ", 0));
-        label_3->setText(QApplication::translate("Dialog", "2-Refractive index", 0));
         label_4->setText(QApplication::translate("Dialog", "Number of regions", 0));
+        label_3->setText(QApplication::translate("Dialog", "2-Refractive index", 0));
+        randomBox->setText(QApplication::translate("Dialog", "Random Index placement", 0));
         fiberButton->setText(QApplication::translate("Dialog", "Fiber", 0));
         basicButton->setText(QApplication::translate("Dialog", "Basic", 0));
         startButton->setText(QApplication::translate("Dialog", "Start", 0));
