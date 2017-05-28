@@ -9,7 +9,7 @@ class Experiment
 public:
     Experiment();
     ~Experiment();
-    Experiment( double puntoinicial,double angulo,double indiceuno,double indicedos, int regiones );
+    Experiment(double puntoinicial, double angulo, double indiceuno, double indicedos, int regiones , bool random);
 
     struct region{
      double puntoinicial;

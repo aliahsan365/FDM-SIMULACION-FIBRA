@@ -30,16 +30,21 @@ private:
     Ui::Dialog *ui;
     QGraphicsScene *scene;
     QLineF topLine, leftLine, rightLine, bottomLine;
-    QPen eRed, eBlue, eBlack;
+    QPen eRed, eGray, eBlack, eYellow, eGreen;
     Experiment experiment;
 
     double x;
     double y;
+    double n1, n2;
+    const double size = 40.0;
+
     bool type; //false = fiber, true = basic)
+    int regions;
 
     void setBox();
     void handleBasic();
     void handleFiber();
+    void delay();
 };
 
 

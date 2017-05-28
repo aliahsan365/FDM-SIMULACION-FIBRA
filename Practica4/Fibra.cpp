@@ -27,45 +27,44 @@ class Fibra {
     vector<region> vregiones;
 	vector<region> vregiones2;
 	
-	int randZeroToN(int N) {
-		srand (time(NULL));
-		return rand() % N-2 + 2;
-		}
+int randZeroToN(int N) {
+    srand (time(NULL));
+    return rand() % N-2 + 2;
+}
 
 
 double calcular_puntos(double angulo,double puntoinicial) {
-	   double calcsin = sin((angulo*(M_PI/180)));
-	   double calccos = cos((angulo*(M_PI/180)));
-		//para calcular el punto de ini
-		double calcfinal = (calccos*100)/calcsin + puntoinicial;
-		//double calcfinal = (calcsin*50)/calccos + puntoinicial;
-		return calcfinal;
-	}
+    double calcsin = sin((angulo*(M_PI/180)));
+    double calccos = cos((angulo*(M_PI/180)));
+        //para calcular el punto de ini
+        double calcfinal = (calccos*100)/calcsin + puntoinicial;
+        //double calcfinal = (calcsin*50)/calccos + puntoinicial;
+        return calcfinal;
+}
 
 double calcular_distancia(double angulo) {
-	   double calcsin = sin((angulo*(M_PI/180)));
-		double calccos = cos((angulo*(M_PI/180)));
-		//para calcular el punto de ini
-		double calcfinal = (calccos*100)/calcsin;
-		//double calcfinal = (calcsin*50)/calccos + puntoinicial;
+    double calcsin = sin((angulo*(M_PI/180)));
+    double calccos = cos((angulo*(M_PI/180)));
+    //para calcular el punto de ini
+    double calcfinal = (calccos*100)/calcsin;
+    //double calcfinal = (calcsin*50)/calccos + puntoinicial;
 
-	    return calcfinal;
-	}
+    return calcfinal;
+}
 
 
 
 	
-	
-	double calcular_puntos2(double angulo,double puntoinicial) {
+double calcular_puntos2(double angulo,double puntoinicial) {
 	   
-		double calcsin = sin((angulo*(M_PI/180)));
-		double calccos = cos((angulo*(M_PI/180)));
-		//para calcular el punto de ini
-		double calcfinal = (calccos)/calcsin + puntoinicial;
-		//double calcfinal = (calcsin*50)/calccos + puntoinicial;
+    double calcsin = sin((angulo*(M_PI/180)));
+    double calccos = cos((angulo*(M_PI/180)));
+    //para calcular el punto de ini
+    double calcfinal = (calccos)/calcsin + puntoinicial;
+    //double calcfinal = (calcsin*50)/calccos + puntoinicial;
 
-	    return calcfinal;
-	}
+    return calcfinal;
+}
 	
 	
     double ley_snell(double indiceuno,double indicedos,double anguloi) {
@@ -182,87 +181,7 @@ double calcular_distancia(double angulo) {
 		//escalando el punto final del vector de bajada (vregiones2).
 		//factor (2*i*escalado)
 	}
-    
-    void print_vector_region() {
-	
-			for (int i = 0; i < int(vregiones.size()); ++i) {
-			cout << "region numero " << i << ":" << endl;
-			cout << "puntoincial " << vregiones[i].puntoinicial << endl;
-			cout << "puntofinal " <<  vregiones[i].puntofinal << endl;
-			cout << "angulo " << vregiones[i].angulo << endl;
-			cout << "indice " << vregiones[i].indice << endl;
-			cout << "distancia calculada " << vregiones[i].distanciacalculada << endl;
-			}
-		}
-   
-     vector<region> getvector() {
-		 return vregiones;
-		 }
-	
-	vector<double> obtener_vector_posini() {
-		int N = vregiones.size();
-		vector<double> posini(N);
-		
-		for (int i = 0; i < N; ++i) {
-			posini[i] = vregiones[i].puntoinicial;
-			}
-		
-		return posini;
-		}
-		
-		
-    vector<double> obtener_vector_posfin() {
-		int N = vregiones.size();
-		vector<double> posfin(N);
-		
-		for (int i = 0; i < N; ++i) {
-			posfin[i] = vregiones[i].puntofinal;
-			}
-		
-		return posfin;
-		}
-		
-	 vector<double> obtener_vector_indice() {
-		int N = vregiones.size();
-		vector<double> ind(N);
-		for (int i = 0; i < N; ++i) {
-			ind[i] = vregiones[i].indice;
-			}
-		return ind;
-		}
-    
-   vector<double> obtener_vector_angulo() {
-		int N = vregiones.size();
-		vector<double> ang(N);
-		
-		for (int i = 0; i < N; ++i) {
-			ang[i] = vregiones[i].angulo;
-			}
-		
-		return ang;
-		}
-	
-	 vector<double> obtener_vector_distanciacalculada() {
-		int N = vregiones.size();
-		vector<double> distancias(N);
-		
-		for (int i = 0; i < N; ++i) {
-			distancias[i] = vregiones[i].distanciacalculada;
-			}
-		
-		return distancias;
-		}
-	
-	
-	    
-   void print_vector_double(vector<double> v) {
-		for (int i = 0; i < int(v.size()); ++i) {
-			cout << v[i] << " ";
-			}
-			cout << endl;
-		}
-		
-		
+
 	
 double calcular_triangle(double n1, double n2) {
 	return (n1-n2)/n1;
@@ -274,26 +193,8 @@ double calcular_formula_tocha(double n1, double tr, double r, double a) {
 }
 
 	
-   };
+};
 	
 
-	
-	
-int main() {
-	
-
-
-	// calcular triangle, o n2, per la formula del pdf
-	
-	
-	//vector<region> vr(N);
-	
-	//puntoinicial , angulo, indice1 , indice2 , nregiones
-	Fibra s(30);
-	//s.print_vector_region();
-	
-
-	
-	}
 
 
