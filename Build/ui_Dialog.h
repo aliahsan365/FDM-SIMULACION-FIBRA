@@ -43,6 +43,8 @@ public:
     QLineEdit *regionsEdit;
     QLabel *label_3;
     QLineEdit *n2Edit;
+    QLabel *label_5;
+    QLineEdit *aEdit;
     QCheckBox *randomBox;
     QSpacerItem *horizontalSpacer;
     QVBoxLayout *verticalLayout;
@@ -114,6 +116,16 @@ public:
 
         verticalLayout_2->addWidget(n2Edit);
 
+        label_5 = new QLabel(groupBox);
+        label_5->setObjectName(QStringLiteral("label_5"));
+
+        verticalLayout_2->addWidget(label_5);
+
+        aEdit = new QLineEdit(groupBox);
+        aEdit->setObjectName(QStringLiteral("aEdit"));
+
+        verticalLayout_2->addWidget(aEdit);
+
         randomBox = new QCheckBox(groupBox);
         randomBox->setObjectName(QStringLiteral("randomBox"));
 
@@ -182,9 +194,10 @@ public:
         label_2->setText(QApplication::translate("Dialog", "1-Refractive index ", 0));
         label_4->setText(QApplication::translate("Dialog", "Number of regions", 0));
         label_3->setText(QApplication::translate("Dialog", "2-Refractive index", 0));
+        label_5->setText(QApplication::translate("Dialog", "a", 0));
         randomBox->setText(QApplication::translate("Dialog", "Random Index placement", 0));
         fiberButton->setText(QApplication::translate("Dialog", "Fiber", 0));
-        basicButton->setText(QApplication::translate("Dialog", "Basic", 0));
+        basicButton->setText(QApplication::translate("Dialog", "Snell", 0));
         startButton->setText(QApplication::translate("Dialog", "Start", 0));
     } // retranslateUi
 

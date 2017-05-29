@@ -19,7 +19,7 @@ Experiment::Experiment(double puntoinicial, double angulo, double indiceuno, dou
     vregiones[0].indice = indiceuno;
     vregiones[0].puntofinal = calculatePoints(vregiones[0].angulo, vregiones[0].puntoinicial);
 
-    int nrand = randZeroToN(regiones);
+    int nrand = regiones/2;
     bool cambio_region = false;
 
     for (int step = 1 ; step < regiones-1 ; ++step) {

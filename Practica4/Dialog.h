@@ -5,6 +5,7 @@
 #include <QtGui>
 #include <QGraphicsScene>
 #include "Experiment.h"
+#include "Fiber.h"
 
 
 
@@ -30,13 +31,14 @@ private:
     Ui::Dialog *ui;
     QGraphicsScene *scene;
     QLineF topLine, leftLine, rightLine, bottomLine;
-    QPen eRed, eGray, eBlack, eYellow, eGreen;
+    QPen eGray, eBlack, eRed, eBlue;
     Experiment experiment;
+    Fiber fiber;
 
     double x;
     double y;
     double n1, n2;
-    const double size = 40.0;
+    double size = 15.0;
 
     bool type; //false = fiber, true = basic)
     int regions;

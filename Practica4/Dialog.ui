@@ -65,6 +65,16 @@
            <widget class="QLineEdit" name="n2Edit"/>
           </item>
           <item>
+           <widget class="QLabel" name="label_5">
+            <property name="text">
+             <string>a</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="aEdit"/>
+          </item>
+          <item>
            <widget class="QCheckBox" name="randomBox">
             <property name="text">
              <string>Random Index placement</string>
@@ -98,7 +108,7 @@
           <item>
            <widget class="QPushButton" name="basicButton">
             <property name="text">
-             <string>Basic</string>
+             <string>Snell</string>
             </property>
            </widget>
           </item>
